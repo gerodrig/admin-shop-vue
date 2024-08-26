@@ -1,13 +1,23 @@
+import { adminRoutes } from '@/modules/admin/routes'
+import { authRoutes } from '@/modules/auth/routes'
+import ShopLayout from '@/modules/shop/layouts/ShopLayout.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    // {
-    //   path: '/',
-    //   name: 'home',
-    //   component: HomeView
-    // },
+    {
+      path: '/',
+      name: 'shop',
+      component: ShopLayout,
+      children: [
+        {
+          path: '',
+          name: 'home',
+          component: () => import('@/modules/shop/views/HomeView.vue')
+        }
+      ]
+    },
     // {
     //   path: '/about',
     //   name: 'about',
@@ -16,6 +26,12 @@ const router = createRouter({
     //   // which is lazy-loaded when the route is visited.
     //   component: () => import('../views/AboutView.vue')
     // }
+
+    //? Auth routes
+    authRoutes,
+
+    //? Admin Routes
+    adminRoutes
   ]
 })
 
