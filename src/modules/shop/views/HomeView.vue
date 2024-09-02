@@ -125,7 +125,7 @@ watch(
   () => route.query.page,
   (newPage) => {
     page.value = Number(newPage || 1);
-    window.scrollTo({ top: 0, behaviour: "smooth" });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 );
 
